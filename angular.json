@@ -103,6 +103,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "canap:build:production",
+            "firebaseProject": "canap-e587a",
+            "firebaseHostingSite": "canap-e587a"
+          }
         }
       }
     }

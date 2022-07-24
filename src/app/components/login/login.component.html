@@ -1,0 +1,5 @@
+<p>login</p>
+<ng-container *ngIf="!(auth.user | async)">
+  <p>Please login.</p>
+  <button (click)="login()">Login with Google</button>
+</ng-container>

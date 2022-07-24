@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "canap-e587a": {
+      "hosting": {
+        "canap": [
+          "canap-e587a"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "canap-e587a"
+  }
+}
