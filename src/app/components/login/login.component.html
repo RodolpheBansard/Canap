@@ -1,5 +1,22 @@
-<p>login</p>
-<ng-container *ngIf="!(auth.user | async)">
-  <p>Please login.</p>
-  <button (click)="login()">Login with Google</button>
-</ng-container>
+
+<div class="login-background"></div>
+
+<div class="Login-action-container">
+
+  <div class="login-logo">
+    <img class="simple-glow" src="assets/icons/controller-icon.svg">
+    <span class="simple-glow login-text-logo">CANAP</span>
+  </div>
+
+  <ng-container *ngIf="!(auth.user | async)">
+
+    <div (click)="login()" class="button-gradient-background">
+      <div class="button-hover-background">
+        <img src="assets/icons/google-icon.svg">
+        <span class="simple-glow">Sign in with Google</span>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+
