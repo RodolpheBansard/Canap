@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+  --primary: #FFFFFF;
+  --grey300: #9699A0;
+  --grey700: #2C3340;
+  --grey900: #121418;
+  --primary-gradient: linear-gradient(90deg, #28B499 3.45%, #12C397 45.19%, #E7CE7B 100%);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Audiowide', cursive;
+  font-size: 24px;
+}
