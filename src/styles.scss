@@ -8,6 +8,10 @@
   --primary-gradient: linear-gradient(90deg, #28B499 3.45%, #12C397 45.19%, #E7CE7B 100%);
   --simple-glow: 0px 0px 10px rgba(255, 255, 255, 0.5);
   --card-glow: 0px 0px 35px rgba(255, 255, 255, 0.5);
+
+  --title:32px;
+  --card-title:24px;
+  --normal-text: 18px
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
@@ -28,5 +32,15 @@ body{
 
 
 .simple-glow{
-  filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.5));
+  filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.5));
+}
+
+.title{
+  font-size: var(--title);
+}
+.normal-text{
+  font-size: var(--normal-text);
+}
+.card-title{
+  font-size: var(--card-title);
 }

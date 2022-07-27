@@ -11,12 +11,14 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
 import {AngularFireModule} from "@angular/fire/compat";
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DashboardCardComponent } from './components/dashboard/dashboard-card/dashboard-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    DashboardCardComponent
   ],
   imports: [
     BrowserModule,

@@ -12,12 +12,16 @@ import {GameNight} from "../login/login.component";
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
+
+  displayNameLetter?: string = '';
+
   constructor(
               public auth: AngularFireAuth,
               private router: Router) {
 
-    this.auth.user.subscribe((data)=> {
-      if(data){
+    this.auth.user.subscribe((user)=> {
+      if(user){
+        this.displayNameLetter = user.displayName?.charAt(0);
         this.router.navigateByUrl('dashboard');
       }
     })
