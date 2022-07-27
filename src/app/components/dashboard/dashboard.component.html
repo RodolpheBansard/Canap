@@ -15,20 +15,11 @@
 <div class="dashboard-container">
   <span class="title">Dashboard</span>
 
-  <div class="dashboard-card">
-    <div class="dashboard-card-header">
-      <div class="dashboard-card-header-container">
-        <img src="assets/icons/gamenight-icon.svg">
-        <span class="card-title">Game Nights</span>
-      </div>
-      <div class="dashboard-card-header-container">
-        <span class="card-title">Add</span>
-        <img src="assets/icons/add-icon.svg">
-      </div>
-    </div>
-    <div class="dashboard-card-content">
-      <img class="no-content-icon" src="assets/icons/no-content-icon.svg">
-      <span class="normal-text">No Game Night created</span>
-    </div>
+  <app-dashboard-card [gameNights]="gameNights" [cardTitle]="'Game Nights'" [cardIconUrl]="'assets/icons/gamenight-icon.svg'"></app-dashboard-card>
+
+  <div class="game-and-history-container">
+    <app-dashboard-card [games]="games" [cardTitle]="'Game List'" [cardIconUrl]="'assets/icons/game-icon.svg'"></app-dashboard-card>
+    <app-dashboard-card [cardTitle]="'History'" [cardIconUrl]="'assets/icons/history-icon.svg'"></app-dashboard-card>
   </div>
+
 </div>

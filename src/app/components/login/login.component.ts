@@ -5,10 +5,6 @@ import {AngularFireAuth} from "@angular/fire/compat/auth";
 import firebase from 'firebase/compat/app';
 import {Router} from "@angular/router";
 
-export interface GameNight{
-  name: string;
-}
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,13 +12,9 @@ export interface GameNight{
 })
 export class LoginComponent {
 
-  private gameNightsCollection: AngularFirestoreCollection<GameNight>;
-  gameNights: Observable<GameNight[]>;
-  constructor(private afs: AngularFirestore,
+  constructor(
               public auth: AngularFireAuth,
               private router: Router) {
-    this.gameNightsCollection = afs.collection<GameNight>('GameNights');
-    this.gameNights = this.gameNightsCollection.valueChanges();
 
     this.auth.user.subscribe((data)=> {
       if(data){

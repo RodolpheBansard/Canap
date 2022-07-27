@@ -2,12 +2,13 @@
 
 :root {
   --primary: #FFFFFF;
-  --grey300: #9699A0;
+  --grey300: #E0E0E0;
+  --grey500: #9699A0;
   --grey700: #2C3340;
   --grey900: #121418;
   --primary-gradient: linear-gradient(90deg, #28B499 3.45%, #12C397 45.19%, #E7CE7B 100%);
   --simple-glow: 0px 0px 10px rgba(255, 255, 255, 0.5);
-  --card-glow: 0px 0px 35px rgba(255, 255, 255, 0.5);
+  --card-glow: 0px 0px 30px rgba(255, 255, 255, 0.5);
 
   --title:32px;
   --card-title:24px;

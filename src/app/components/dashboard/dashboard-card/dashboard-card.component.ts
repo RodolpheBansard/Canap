@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Game} from "../../../model/game";
+import {GameNight} from "../../../model/game-night";
 
 @Component({
   selector: 'app-dashboard-card',
@@ -6,6 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard-card.component.scss']
 })
 export class DashboardCardComponent implements OnInit {
+
+  @Input()
+  cardTitle! : string;
+  @Input()
+  cardIconUrl! : string;
+
+  @Input()
+  gameNights : GameNight[] = [];
+  @Input()
+  games: Game[] = [];
+
 
   constructor() { }
 

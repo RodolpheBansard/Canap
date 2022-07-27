@@ -12,22 +12,28 @@ import {AngularFireModule} from "@angular/fire/compat";
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DashboardCardComponent } from './components/dashboard/dashboard-card/dashboard-card.component';
+import {CommonModule} from "@angular/common";
+import {AngularFireStorageModule} from "@angular/fire/compat/storage";
+import { ImageUrlPipe } from './components/dashboard/dashboard-card/image-url.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    DashboardCardComponent
+    DashboardCardComponent,
+    ImageUrlPipe
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
-    provideStorage(() => getStorage())
+    provideStorage(() => getStorage()),
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

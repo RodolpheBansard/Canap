@@ -1,0 +1,90 @@
+.dashboard-card{
+  background: var(--grey700);
+  border-radius: 20px;
+  box-shadow: var(--card-glow);
+
+  .dashboard-card-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    border-bottom: var(--grey300) 1px solid;
+
+    .dashboard-card-header-container{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 0.5rem;
+
+
+
+      img:nth-child(1){
+        width: 25px;
+        height: 25px;
+      }
+      img:nth-child(2){
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+
+  .dashboard-card-no-content{
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .dashboard-card-content{
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .card-content-item{
+      padding: 0.5rem 0.5rem;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: var(--grey300) 1px solid;
+
+
+    }
+    .game-content-item{
+      padding-right: 0.5rem;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: var(--grey300) 1px solid;
+
+      .item-title{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .game-preview{
+        background-repeat: no-repeat;
+        aspect-ratio: 1;
+        background-size: cover;
+        background-position: center;
+        height: 70px;
+      }
+    }
+  }
+
+  .no-content-icon{
+    width: 44px;
+    height: 44px;
+  }
+  .no-content-text{
+    color: var(--grey500);
+  }
+}
