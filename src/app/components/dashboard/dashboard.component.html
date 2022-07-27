@@ -3,10 +3,18 @@
 <div class="dashboard-container">
   <span class="title">Dashboard</span>
 
-  <app-dashboard-card [gameNights]="gameNights" [cardTitle]="'Game Nights'" [cardIconUrl]="'assets/icons/gamenight-icon.svg'"></app-dashboard-card>
+  <app-dashboard-card [gameNights]="gameNights"
+                      [cardTitle]="'Game Nights'"
+                      [cardIconUrl]="'assets/icons/gamenight-icon.svg'"
+                      (onAddEvent)="addGameNight()"
+  ></app-dashboard-card>
 
   <div class="game-and-history-container">
-    <app-dashboard-card [games]="games" [cardTitle]="'Game List'" [cardIconUrl]="'assets/icons/game-icon.svg'"></app-dashboard-card>
+    <app-dashboard-card [games]="games"
+                        [cardTitle]="'Game List'"
+                        [cardIconUrl]="'assets/icons/game-icon.svg'"
+                        (onAddEvent)="addGame()"
+    ></app-dashboard-card>
     <app-dashboard-card [cardTitle]="'History'" [cardIconUrl]="'assets/icons/history-icon.svg'"></app-dashboard-card>
   </div>
 

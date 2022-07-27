@@ -1,10 +1,10 @@
 <div class="header">
-  <div class="header-group">
+  <div *ngIf="isLogoVisible" class="header-group">
     <img class="simple-glow" src="assets/icons/controller-icon.svg">
     <span class="simple-glow">CANAP</span>
   </div>
 
-  <div class=" header-group">
+  <div *ngIf="isSettingsVisible && isLogoVisible" class=" header-group">
     <img (click)="logout()" class="simple-glow" src="assets/icons/settings-icon.svg">
     <div class="simple-glow user-display-name">
       <span>{{authService.displayNameLetter}}</span>

@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {AngularFireAuth} from "@angular/fire/compat/auth";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {DashboardService} from "./dashboard.service";
 import firebase from 'firebase/compat/app';
 
@@ -15,7 +15,8 @@ export class AuthService {
   constructor(
     public auth: AngularFireAuth,
     private router: Router,
-    public dashboardService : DashboardService) {
+    public dashboardService : DashboardService,
+    private activatedRoute : ActivatedRoute) {
 
     auth.onAuthStateChanged((user) => {
       if(user){
@@ -25,7 +26,10 @@ export class AuthService {
     this.auth.user.subscribe((user) => {
       if (user) {
         this.displayNameLetter = user.displayName?.charAt(0);
-        this.router.navigateByUrl('dashboard');
+        if(this.router.url.includes('login')){
+          this.router.navigateByUrl('dashboard');
+        }
+
       }
     })
   }

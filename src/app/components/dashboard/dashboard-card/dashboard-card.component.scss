@@ -17,8 +17,6 @@
       align-items: center;
       gap: 0.5rem;
 
-
-
       img:nth-child(1){
         width: 25px;
         height: 25px;
@@ -93,4 +91,8 @@
   .no-content-text{
     color: var(--grey500);
   }
+}
+
+.add-button{
+  cursor: pointer;
 }

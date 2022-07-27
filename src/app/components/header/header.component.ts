@@ -1,7 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {AngularFireAuth} from "@angular/fire/compat/auth";
-import {Router} from "@angular/router";
-import {DashboardService} from "../../service/dashboard.service";
+import {Component, Input} from '@angular/core';
 import {AuthService} from "../../service/auth.service";
 
 @Component({
@@ -10,6 +7,12 @@ import {AuthService} from "../../service/auth.service";
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+
+  @Input()
+  isLogoVisible : boolean = true;
+
+  @Input()
+  isSettingsVisible : boolean = true;
 
 
   constructor(

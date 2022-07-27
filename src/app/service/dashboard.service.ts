@@ -17,4 +17,9 @@ export class DashboardService {
   }
 
 
+  addGame(game:Game): Promise<any>{
+    return this.afs.collection<Game>('games').add(game);
+  }
+
+
 }

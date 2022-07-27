@@ -45,3 +45,27 @@ body{
 .card-title{
   font-size: var(--card-title);
 }
+
+.button-gradient-background{
+
+  cursor: pointer;
+  background: var(--primary-gradient);
+  padding: .10rem;
+  border-radius: 4px;
+
+  .button-hover-background{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: .5rem;
+
+    border-radius: 4px;
+    padding: .25rem .5rem;
+    background: var(--grey900);
+
+    span{
+      font-size: 20px;
+    }
+
+  }
+}

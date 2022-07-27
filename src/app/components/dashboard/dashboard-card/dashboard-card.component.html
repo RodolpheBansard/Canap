@@ -4,7 +4,7 @@
       <img src="{{cardIconUrl}}">
       <span class="card-title">{{cardTitle}}</span>
     </div>
-    <div class="dashboard-card-header-container">
+    <div (click)="onAddEvent.emit()" class="dashboard-card-header-container add-button">
       <span class="card-title">Add</span>
       <img src="assets/icons/add-icon.svg">
     </div>

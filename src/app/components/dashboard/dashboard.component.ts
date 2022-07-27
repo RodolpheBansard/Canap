@@ -21,16 +21,9 @@ export class DashboardComponent {
   gameNights: GameNight[] = [];
 
   constructor(
-              public auth: AngularFireAuth,
               private router: Router,
-              public dashboardService : DashboardService) {
-
-    this.auth.user.subscribe((user)=> {
-      if(user){
-        this.displayNameLetter = user.displayName?.charAt(0);
-        this.router.navigateByUrl('dashboard');
-      }
-    })
+              public dashboardService : DashboardService
+  ) {
 
     dashboardService.games$.subscribe((games) => {
       if(games){
@@ -43,8 +36,12 @@ export class DashboardComponent {
       }
     })
   }
-  logout() {
-    this.auth.signOut();
-    this.router.navigateByUrl('login');
+
+  addGameNight(){
+    console.log("add game night");
+  }
+
+  addGame(){
+    this.router.navigateByUrl('add-game')
   }
 }

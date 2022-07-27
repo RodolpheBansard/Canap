@@ -16,6 +16,8 @@ import {CommonModule} from "@angular/common";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import { AddGameComponent } from './components/add-game/add-game.component';
 import { HeaderComponent } from './components/header/header.component';
+import { FileDropDirective } from './components/add-game/file-drop.directive';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { HeaderComponent } from './components/header/header.component';
     DashboardComponent,
     DashboardCardComponent,
     AddGameComponent,
-    HeaderComponent
+    HeaderComponent,
+    FileDropDirective,
   ],
   imports: [
     CommonModule,
@@ -35,7 +38,9 @@ import { HeaderComponent } from './components/header/header.component';
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

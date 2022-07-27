@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Game} from "../../../model/game";
 import {GameNight} from "../../../model/game-night";
 
@@ -18,6 +18,9 @@ export class DashboardCardComponent implements OnInit {
   gameNights : GameNight[] = [];
   @Input()
   games: Game[] = [];
+
+  @Output()
+  onAddEvent : EventEmitter<any> = new EventEmitter<any>();
 
 
   constructor() { }

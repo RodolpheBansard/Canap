@@ -1,1 +1,31 @@
-<p>add-game works!</p>
+<app-header style="position: absolute" [isSettingsVisible]="false"></app-header>
+
+<div  class="add-game-container">
+  <div [formGroup]="addGameForm" class="form-container">
+    <span class="form-title">Add A Game</span>
+    <div class="inputs-container">
+      <input formControlName="name" placeholder="Game Name">
+      <input formControlName="description" placeholder="Description">
+    </div>
+    <button *ngIf="addGameForm.valid && uploadImageUrl.getValue()" (click)="onSubmit()">submit</button>
+  </div>
+  <div class="image-container">
+    <div *ngIf="uploadImageUrl.getValue() === '' else image" (fileDropped)="fileUpload($event)" class="import-card" fileDrop>
+      <img class="image-icon" src="assets/icons/image-icon.svg">
+      <span style="text-align: center">Drag an image of the game to start uploading</span>
+      <div class="or-text">
+        <img class="line-icon" src="assets/icons/line-icon.svg">
+        <span>OR</span>
+        <img class="line-icon" src="assets/icons/line-icon.svg">
+      </div>
+      <input #file style="display: none;" type="file" accept="image/png,image/jpeg,image/jpeg" (change)="onInputChange($event)" >
+      <div (click)="file.click()" class="upload-button">
+        Browse File
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #image>
+  <div class="uploaded-image-container"  [style.background-image]="'url(' + uploadImageUrl.getValue() + ')'"></div>
+</ng-template>
