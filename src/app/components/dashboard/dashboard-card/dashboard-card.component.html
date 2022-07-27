@@ -22,7 +22,7 @@
     </div>
 
     <div *ngIf="games.length>0" class="dashboard-card-content">
-      <div class="game-content-item" *ngFor="let game of games">
+      <div class="card-game-content-item" *ngFor="let game of games">
         <div class="item-title">
           <div class="game-preview" [style.background-image]="'url(' + game.imageUrl + ')'" ></div>
           <span>{{game.name}}</span>

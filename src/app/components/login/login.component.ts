@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {AngularFireAuth} from "@angular/fire/compat/auth";
 import firebase from 'firebase/compat/app';
 import {Router} from "@angular/router";
+import {AuthService} from "../../service/auth.service";
 
 @Component({
   selector: 'app-login',
@@ -12,19 +13,12 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent {
 
-  constructor(
-              public auth: AngularFireAuth,
-              private router: Router) {
+  constructor(private authService: AuthService) {
 
-    this.auth.user.subscribe((data)=> {
-      if(data){
-        console.log(data)
-        this.router.navigateByUrl('dashboard');
-      }
-    })
+
   }
   login() {
-    this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    this.authService.login();
   }
 
 }

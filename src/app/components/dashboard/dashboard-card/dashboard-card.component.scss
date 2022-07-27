@@ -38,6 +38,7 @@
     justify-content: center;
   }
   .dashboard-card-content{
+    overflow: auto;
     height: 20vh;
     display: flex;
     flex-direction: column;
@@ -51,10 +52,12 @@
       align-items: center;
       justify-content: space-between;
       border-bottom: var(--grey300) 1px solid;
-
-
     }
-    .game-content-item{
+    .card-content-item:last-child{
+      border-bottom: none
+    }
+
+    .card-game-content-item{
       padding-right: 0.5rem;
       width: 100%;
       display: flex;
@@ -77,6 +80,9 @@
         background-position: center;
         height: 70px;
       }
+    }
+    .card-game-content-item:last-child{
+      border-bottom: none
     }
   }
 

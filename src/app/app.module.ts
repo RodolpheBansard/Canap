@@ -14,7 +14,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DashboardCardComponent } from './components/dashboard/dashboard-card/dashboard-card.component';
 import {CommonModule} from "@angular/common";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
-import { ImageUrlPipe } from './components/dashboard/dashboard-card/image-url.pipe';
+import { AddGameComponent } from './components/add-game/add-game.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ImageUrlPipe } from './components/dashboard/dashboard-card/image-url.pi
     LoginComponent,
     DashboardComponent,
     DashboardCardComponent,
-    ImageUrlPipe
+    AddGameComponent,
+    HeaderComponent
   ],
   imports: [
     CommonModule,
