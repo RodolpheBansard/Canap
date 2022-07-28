@@ -1,0 +1,24 @@
+<div [formGroup]="addGameNightNameForm" class="form-container">
+  <span>Create the first team</span>
+
+
+
+  <div class="inputs-container">
+    <input formControlName="name" placeholder="Enter a team name">
+
+    <div class="emoji-selector">
+      <span>Choose an emoji</span>
+      <a
+        (click)="toggled = !toggled"
+        [(emojiPickerIf)]="toggled"
+        [emojiPickerDirection]="'bottom' || 'top' || 'left' || 'right'"
+        (emojiPickerSelect)="handleSelection($event)"
+      >
+        <span *ngIf="emojiSelected">{{emojiSelected}}</span>
+        <img *ngIf="!emojiSelected" class="emoji-icon" src="assets/icons/emoji-icon.svg">
+      </a>
+    </div>
+  </div>
+
+  <app-primary-button *ngIf="addGameNightNameForm.valid && emojiSelected" (clickEmitter)="nextStepEmitter.emit()" [buttonText]="'Next'"></app-primary-button>
+</div>

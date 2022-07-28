@@ -1,0 +1,7 @@
+<div [formGroup]="addGameNightNameForm" class="form-container">
+  <span>Let's Create a Game Night !</span>
+
+  <input formControlName="name" placeholder="Enter a name">
+
+  <app-primary-button *ngIf="addGameNightNameForm.valid" (clickEmitter)="nextStepEmitter.emit()" [buttonText]="'Next'"></app-primary-button>
+</div>

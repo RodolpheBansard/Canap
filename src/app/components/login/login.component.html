@@ -10,12 +10,10 @@
 
   <ng-container>
 
-    <div (click)="login()" class="button-gradient-background">
-      <div class="button-hover-background">
-        <img src="assets/icons/google-icon.svg">
-        <span class="simple-glow">Sign in with Google</span>
-      </div>
-    </div>
+    <app-primary-button [buttonText]="'Sign In With Google'"
+                        [buttonIcon]="'assets/icons/google-icon.svg'"
+                        (clickEmitter)="login()"
+    ></app-primary-button>
   </ng-container>
 </div>
 

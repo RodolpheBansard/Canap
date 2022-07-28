@@ -19,6 +19,13 @@ import { HeaderComponent } from './components/header/header.component';
 import { FileDropDirective } from './components/add-game/file-drop.directive';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { AddGameNightComponent } from './components/add-game-night/add-game-night.component';
+import { GameNightNameComponent } from './components/add-game-night/game-night-name/game-night-name.component';
+import { GameNightNumberInputComponent } from './components/add-game-night/game-night-number-input/game-night-number-input.component';
+import { GameNightCreateTeamComponent } from './components/add-game-night/game-night-create-team/game-night-create-team.component';
+import { GameNightAddGameComponent } from './components/add-game-night/game-night-add-game/game-night-add-game.component';
+import { GameNightSaveComponent } from './components/add-game-night/game-night-save/game-night-save.component';
+import { PrimaryButtonComponent } from './components/primary-button/primary-button.component';
+import {NgxEmojiPickerModule} from "ngx-emoji-picker";
 
 @NgModule({
   declarations: [
@@ -30,6 +37,12 @@ import { AddGameNightComponent } from './components/add-game-night/add-game-nigh
     HeaderComponent,
     FileDropDirective,
     AddGameNightComponent,
+    GameNightNameComponent,
+    GameNightNumberInputComponent,
+    GameNightCreateTeamComponent,
+    GameNightAddGameComponent,
+    GameNightSaveComponent,
+    PrimaryButtonComponent,
   ],
   imports: [
     CommonModule,
@@ -42,7 +55,8 @@ import { AddGameNightComponent } from './components/add-game-night/add-game-nigh
     provideStorage(() => getStorage()),
     AngularFireStorageModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxEmojiPickerModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

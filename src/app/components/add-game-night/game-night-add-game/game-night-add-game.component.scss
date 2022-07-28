@@ -1,0 +1,43 @@
+input{
+  outline: none;
+  border: none;
+  border-bottom: 1px solid var(--grey500);
+  background: var(--grey900);
+
+  color: white;
+}
+input:focus{
+  border-bottom: 1px solid var(--primary)!important;
+}
+
+.form-container{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 10%;
+  width: 100%;
+
+  .input-container{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    .inputs-container{
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .ranking-container{
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+
+      input{
+        width: 2.5rem;
+      }
+
+    }
+  }
+}

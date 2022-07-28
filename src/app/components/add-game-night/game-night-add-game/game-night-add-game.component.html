@@ -1,0 +1,23 @@
+<div [formGroup]="addGameNightNameForm" class="form-container">
+  <div class="input-container">
+    <span>Let's Create a Game Night !</span>
+
+    <div class="inputs-container">
+      <input formControlName="name" placeholder="game Name">
+      <input formControlName="game" placeholder="Number Of Round">
+    </div>
+
+  </div>
+
+  <div class="input-container">
+    <span>Points by ranking</span>
+    <div class="ranking-container">
+      <input formControlName="first" placeholder="1st">
+      <input formControlName="second" placeholder="2nd">
+      <input formControlName="third" placeholder="3rd">
+      <input formControlName="fourth" placeholder="4th">
+    </div>
+  </div>
+
+  <app-primary-button *ngIf="addGameNightNameForm.valid" (clickEmitter)="nextStepEmitter.emit()" [buttonText]="'Next'"></app-primary-button>
+</div>

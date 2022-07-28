@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddGameNightComponent implements OnInit {
 
+  counter = 0;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  incrementCounter(){
+    console.log('increment')
+    this.counter++;
+  }
 }

@@ -1,0 +1,12 @@
+<div class="form-container">
+  <span>{{title}}</span>
+
+  <div class="number-input-container">
+    <span (click)="selectNumber(number)"
+          [ngClass]="{'active': selectedNumber === number}"
+          *ngFor="let number of numberInputs; let index = index"
+    >{{number}}</span>
+  </div>
+
+  <app-primary-button *ngIf="selectedNumber !== 0" (clickEmitter)="nextStepEmitter.emit()" [buttonText]="'Next'"></app-primary-button>
+</div>

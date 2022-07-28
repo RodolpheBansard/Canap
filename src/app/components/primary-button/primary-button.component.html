@@ -1,0 +1,6 @@
+<div (click)="clickEmitter.emit()" class="button-gradient-background">
+  <div class="button-hover-background">
+    <img *ngIf="buttonIcon" src="{{buttonIcon}}">
+    <span  *ngIf="buttonText" class="simple-glow">{{buttonText}}</span>
+  </div>
+</div>
