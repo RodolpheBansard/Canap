@@ -18,6 +18,7 @@ import { AddGameComponent } from './components/add-game/add-game.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FileDropDirective } from './components/add-game/file-drop.directive';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { AddGameNightComponent } from './components/add-game-night/add-game-night.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     AddGameComponent,
     HeaderComponent,
     FileDropDirective,
+    AddGameNightComponent,
   ],
   imports: [
     CommonModule,

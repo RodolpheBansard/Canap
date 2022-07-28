@@ -38,7 +38,7 @@ export class DashboardComponent {
   }
 
   addGameNight(){
-    console.log("add game night");
+    this.router.navigateByUrl('add-game-night')
   }
 
   addGame(){
