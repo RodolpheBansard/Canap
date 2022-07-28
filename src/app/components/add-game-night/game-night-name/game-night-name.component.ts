@@ -10,7 +10,7 @@ export class GameNightNameComponent implements OnInit {
   addGameNightNameForm: FormGroup;
 
   @Output()
-  nextStepEmitter = new EventEmitter<any>();
+  nameEmitter = new EventEmitter<string>();
 
   constructor(private fb: FormBuilder) {
     this.addGameNightNameForm = this.fb.group({
@@ -23,5 +23,9 @@ export class GameNightNameComponent implements OnInit {
 
   get name(){
     return this.addGameNightNameForm.get('name')
+  }
+
+  submit(){
+    this.nameEmitter.emit(this.addGameNightNameForm.get('name')?.value);
   }
 }

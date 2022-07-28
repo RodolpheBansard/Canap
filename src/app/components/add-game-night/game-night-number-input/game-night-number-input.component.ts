@@ -15,10 +15,14 @@ export class GameNightNumberInputComponent  {
   title: string = '';
 
   @Output()
-  nextStepEmitter = new EventEmitter<any>();
+  numberEmitter = new EventEmitter<number>();
 
 
   selectNumber(number: number){
     this.selectedNumber = number;
+  }
+
+  submit(){
+    this.numberEmitter.emit(this.selectedNumber);
   }
 }

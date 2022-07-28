@@ -3,29 +3,30 @@
 <div class="add-gameNight-container">
   <div class="form-container">
     <app-game-night-name *ngIf="counter===0"
-                         (nextStepEmitter)="incrementCounter()"
+                         (nameEmitter)="updateName($event)"
                          style="width: 100%"
     ></app-game-night-name>
 
     <app-game-night-number-input *ngIf="counter===1"
-                                 (nextStepEmitter)="incrementCounter()"
+                                 (numberEmitter)="updatePlayerByTeam($event)"
                                  [title]="'How many players by team ?'"
                                  style="width: 100%"
     ></app-game-night-number-input>
 
     <app-game-night-number-input *ngIf="counter===2"
-                                 (nextStepEmitter)="incrementCounter()"
+                                 (numberEmitter)="updateNumberOfTeam($event)"
                                  [title]="'How many Teams ?'"
                                  style="width: 100%"
     ></app-game-night-number-input>
 
+    
     <app-game-night-create-team *ngIf="counter===3"
                                 (nextStepEmitter)="incrementCounter()"
                                 style="width: 100%"
     ></app-game-night-create-team>
 
     <app-game-night-number-input *ngIf="counter===4"
-                                 (nextStepEmitter)="incrementCounter()"
+                                 (numberEmitter)="incrementCounter()"
                                  [title]="'How many games ?'"
                                  style="width: 100%"
     ></app-game-night-number-input>

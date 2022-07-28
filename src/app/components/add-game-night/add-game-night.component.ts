@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {GameNightService} from "../../service/game-night.service";
 
 @Component({
   selector: 'app-add-game-night',
@@ -9,7 +10,7 @@ export class AddGameNightComponent implements OnInit {
 
   counter = 0;
 
-  constructor() { }
+  constructor(private gameNightService : GameNightService) { }
 
   ngOnInit(): void {
   }
@@ -18,4 +19,18 @@ export class AddGameNightComponent implements OnInit {
     console.log('increment')
     this.counter++;
   }
+
+  updateName(name: string){
+    this.gameNightService.updateName(name);
+    this.incrementCounter();
+  }
+  updatePlayerByTeam(number: number){
+    this.gameNightService.updatePlayerByTeam(number);
+    this.incrementCounter();
+  }
+  updateNumberOfTeam(number: number){
+    this.gameNightService.updateNumberOfTeam(number);
+    this.incrementCounter();
+  }
+
 }

@@ -8,5 +8,5 @@
     >{{number}}</span>
   </div>
 
-  <app-primary-button *ngIf="selectedNumber !== 0" (clickEmitter)="nextStepEmitter.emit()" [buttonText]="'Next'"></app-primary-button>
+  <app-primary-button *ngIf="selectedNumber !== 0" (clickEmitter)="submit()" [buttonText]="'Next'"></app-primary-button>
 </div>
