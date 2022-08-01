@@ -1,5 +1,5 @@
 <app-header style="position: absolute" [isSettingsVisible]="false"></app-header>
-
+<span>{{counter}}</span>
 <div class="add-gameNight-container">
   <div class="form-container">
     <app-game-night-name *ngIf="counter===0"
@@ -19,27 +19,41 @@
                                  style="width: 100%"
     ></app-game-night-number-input>
 
-    
-    <app-game-night-create-team *ngIf="counter===3"
-                                (nextStepEmitter)="incrementCounter()"
-                                style="width: 100%"
-    ></app-game-night-create-team>
 
-    <app-game-night-number-input *ngIf="counter===4"
-                                 (numberEmitter)="incrementCounter()"
+    <ng-container *ngFor="let team of (gameNight$|async)?.teams; let index = index">
+      <p>{{index}}</p>
+      <app-game-night-create-team *ngIf="counter===3 + index"
+                                  (teamEmitter)="updateTeams($event,index)"
+                                  style="width: 100%"
+      ></app-game-night-create-team>
+    </ng-container>
+
+
+    <app-game-night-number-input *ngIf="counter === (3 + gameNightService.gameNight.numberOfTeam)"
+                                 (numberEmitter)="updateNumberOfGame($event)"
                                  [title]="'How many games ?'"
                                  style="width: 100%"
     ></app-game-night-number-input>
 
-    <app-game-night-add-game *ngIf="counter===5"
-                                 (nextStepEmitter)="incrementCounter()"
-                                 style="width: 100%"
-    ></app-game-night-add-game>
+    <ng-container *ngFor="let team of (gameNight$|async)?.games; let index = index">
+      <p>{{index}}</p>
+      <app-game-night-add-game *ngIf="counter === (4 + gameNightService.gameNight.numberOfTeam + index )"
+                                   (gameEmitter)="updateGames($event,index)"
+                                   [title]="'How many games ?'"
+                                   style="width: 100%"
+      ></app-game-night-add-game>
+    </ng-container>
 
-    <app-game-night-save *ngIf="counter===6"
-                         (nextStepEmitter)="incrementCounter()"
+    <app-game-night-save *ngIf="counter===4 + gameNightService.gameNight.numberOfTeam + gameNightService.gameNight.numberOfGame"
+                         (saveEmitter)="save()"
                          style="width: 100%"
     ></app-game-night-save>
+
+    <app-stepper [numberOfGame]="numberOfGame"
+                 [numberOfPlayerByTeam]="numberOfPlayerByTeam"
+                 [numberOfTeams]="numberOfTeams"
+                 (stepEmitter)="updateCounter($event)"
+    ></app-stepper>
 
   </div>
 

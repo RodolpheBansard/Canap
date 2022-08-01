@@ -20,5 +20,5 @@
     </div>
   </div>
 
-  <app-primary-button *ngIf="addGameNightNameForm.valid && emojiSelected" (clickEmitter)="nextStepEmitter.emit()" [buttonText]="'Next'"></app-primary-button>
+  <app-primary-button *ngIf="addGameNightNameForm.valid && emojiSelected" (clickEmitter)="submit()" [buttonText]="'Next'"></app-primary-button>
 </div>

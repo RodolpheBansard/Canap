@@ -1,10 +1,23 @@
-<div [formGroup]="addGameNightNameForm" class="form-container">
+<div [formGroup]="addGameForm" class="form-container">
   <div class="input-container">
-    <span>Let's Create a Game Night !</span>
+    <span>Add first game</span>
 
     <div class="inputs-container">
-      <input formControlName="name" placeholder="game Name">
-      <input formControlName="game" placeholder="Number Of Round">
+
+      <div (click)="toggleSelector()" class="game-selector-container">
+        <span *ngIf="!selectedGame">Game</span>
+        <span *ngIf="selectedGame">{{selectedGame.name}}</span>
+        <img src="assets/icons/arrow-down-icon.svg">
+
+        <div [ngClass]="{'active': isSelectorActive}"
+             class="selector"
+
+        >
+          <span (click)="selectGame(game)" *ngFor="let game of games" >{{game.name}}</span>
+        </div>
+      </div>
+
+      <input formControlName="numberOfRounds" placeholder="Number Of Round">
     </div>
 
   </div>
@@ -19,5 +32,5 @@
     </div>
   </div>
 
-  <app-primary-button *ngIf="addGameNightNameForm.valid" (clickEmitter)="nextStepEmitter.emit()" [buttonText]="'Next'"></app-primary-button>
+  <app-primary-button *ngIf="addGameForm.valid && selectedGame" (clickEmitter)="submit()" [buttonText]="'Next'"></app-primary-button>
 </div>

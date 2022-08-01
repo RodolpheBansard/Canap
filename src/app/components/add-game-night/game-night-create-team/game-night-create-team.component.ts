@@ -1,5 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Team} from "../../../model/team";
 
 @Component({
   selector: 'app-game-night-create-team',
@@ -9,10 +10,10 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 export class GameNightCreateTeamComponent {
   addGameNightNameForm: FormGroup;
 
-  emojiSelected! : any;
+  emojiSelected! : string;
 
   @Output()
-  nextStepEmitter = new EventEmitter<any>();
+  teamEmitter = new EventEmitter<Team>();
 
   constructor(private fb: FormBuilder) {
     this.addGameNightNameForm = this.fb.group({
@@ -29,5 +30,12 @@ export class GameNightCreateTeamComponent {
   handleSelection(event: any) {
     this.emojiSelected = event.char;
     this.toggled = false
+  }
+
+  submit(){
+    this.teamEmitter.emit({
+      name:this.addGameNightNameForm.get('name')?.value,
+      emoji:this.emojiSelected
+    });
   }
 }

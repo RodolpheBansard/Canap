@@ -26,6 +26,7 @@ import { GameNightAddGameComponent } from './components/add-game-night/game-nigh
 import { GameNightSaveComponent } from './components/add-game-night/game-night-save/game-night-save.component';
 import { PrimaryButtonComponent } from './components/primary-button/primary-button.component';
 import {NgxEmojiPickerModule} from "ngx-emoji-picker";
+import { StepperComponent } from './components/add-game-night/stepper/stepper.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import {NgxEmojiPickerModule} from "ngx-emoji-picker";
     GameNightAddGameComponent,
     GameNightSaveComponent,
     PrimaryButtonComponent,
+    StepperComponent,
   ],
   imports: [
     CommonModule,

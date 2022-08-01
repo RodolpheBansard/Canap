@@ -1,5 +1,5 @@
 export interface Team{
-  players:string[];
+  players?:string[];
   name:string;
   emoji:string;
 }

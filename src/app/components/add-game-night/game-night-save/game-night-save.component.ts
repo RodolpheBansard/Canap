@@ -1,5 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {GameNightService} from "../../../service/game-night.service";
 
 @Component({
   selector: 'app-game-night-save',
@@ -8,9 +9,13 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class GameNightSaveComponent {
 
-
   @Output()
-  nextStepEmitter = new EventEmitter<any>();
+  saveEmitter = new EventEmitter<number>();
+
+  save(){
+    this.saveEmitter.emit();
+  }
+
 
 
 

@@ -1,0 +1,38 @@
+.stepper-container{
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  width: 40vw;
+  align-items: flex-start;
+  justify-content: center;
+  padding-bottom: 5vh;
+  gap: 4px;
+
+  hr{
+    width: 32px;
+    margin-top: 3px;
+  }
+
+  .stepper-group{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    .stepper-item-container{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 8px;
+
+      .stepper-item{
+        cursor: pointer;
+        width: 10px;
+        height: 10px;
+        border-radius: 5px;
+        background: white;
+      }
+    }
+  }
+}

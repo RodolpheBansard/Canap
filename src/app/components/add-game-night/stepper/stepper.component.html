@@ -1,0 +1,44 @@
+<div class="stepper-container">
+  <div class="stepper-group">
+
+    <div class="stepper-item-container">
+      <div (click)="stepEmitter.emit(0)" class="stepper-item"></div>
+      <div (click)="stepEmitter.emit(1)" class="stepper-item"></div>
+      <div (click)="stepEmitter.emit(2)" class="stepper-item"></div>
+    </div>
+
+  </div>
+  <hr>
+  <div class="stepper-group">
+    <div class="stepper-item-container">
+      <div *ngFor="let i of [].constructor(numberOfTeams); let index = index"
+           class="stepper-item"
+           (click)="stepEmitter.emit(3 + index)"
+      ></div>
+    </div>
+
+    <img src="assets/icons/team-icon.svg">
+  </div>
+  <hr>
+  <div class="stepper-group">
+    <div class="stepper-item-container">
+      <div (click)="stepEmitter.emit(3+numberOfTeams)" class="stepper-item"></div>
+    </div>
+  </div>
+  <hr>
+  <div class="stepper-group">
+    <div class="stepper-item-container">
+      <div *ngFor="let i of [].constructor(numberOfGame); let index = index"
+           class="stepper-item"
+           (click)="stepEmitter.emit(4 + numberOfTeams + index)"
+      ></div>
+    </div>
+    <img src="assets/icons/game-icon.svg">
+  </div>
+  <hr>
+  <div class="stepper-group">
+    <div class="stepper-item-container">
+      <div (click)="stepEmitter.emit(4 + numberOfTeams + numberOfGame)" class="stepper-item"></div>
+    </div>
+  </div>
+</div>
