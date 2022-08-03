@@ -6,6 +6,9 @@
   <app-dashboard-card [gameNights]="gameNights"
                       [cardTitle]="'Game Nights'"
                       [cardIconUrl]="'assets/icons/gamenight-icon.svg'"
+                      (runEvent)="runGameNight($event)"
+                      (editEvent)="editGameNight($event)"
+                      (deleteEvent)="deleteGameNight($event)"
                       (onAddEvent)="addGameNight()"
   ></app-dashboard-card>
 
@@ -13,6 +16,8 @@
     <app-dashboard-card [games]="games"
                         [cardTitle]="'Game List'"
                         [cardIconUrl]="'assets/icons/game-icon.svg'"
+                        (editEvent)="editGame($event)"
+                        (deleteEvent)="deleteGame($event)"
                         (onAddEvent)="addGame()"
     ></app-dashboard-card>
     <app-dashboard-card [cardTitle]="'History'" [cardIconUrl]="'assets/icons/history-icon.svg'"></app-dashboard-card>

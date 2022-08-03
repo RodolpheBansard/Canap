@@ -1,0 +1,42 @@
+.card-item-menu{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 0.75rem;
+  cursor: pointer;
+}
+
+.popup-container{
+  cursor: pointer;
+  position: absolute;
+  margin-top: -2rem;
+  padding-left: 1rem;
+
+  .popup{
+    cursor: auto;
+    padding: .5rem;
+
+    background: var(--grey800);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border-radius: 4px;
+
+    span{
+      font-size: var(--normal-text);
+    }
+
+    .popup-item{
+      cursor: pointer;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+  }
+}
+
+

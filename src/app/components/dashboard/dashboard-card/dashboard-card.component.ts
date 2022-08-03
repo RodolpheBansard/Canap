@@ -22,6 +22,15 @@ export class DashboardCardComponent implements OnInit {
   @Output()
   onAddEvent : EventEmitter<any> = new EventEmitter<any>();
 
+  @Output()
+  deleteEvent: EventEmitter<any> = new EventEmitter<any>();
+  @Output()
+  editEvent: EventEmitter<any> = new EventEmitter<any>();
+  @Output()
+  runEvent: EventEmitter<any> = new EventEmitter<any>();
+  @Output()
+  viewEvent: EventEmitter<any> = new EventEmitter<any>();
+
 
   constructor() { }
 

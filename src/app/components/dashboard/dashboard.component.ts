@@ -40,8 +40,23 @@ export class DashboardComponent {
   addGameNight(){
     this.router.navigateByUrl('add-game-night')
   }
-
   addGame(){
     this.router.navigateByUrl('add-game')
+  }
+
+  deleteGame(game: Game){
+    this.dashboardService.deleteGame(game)
+  }
+  deleteGameNight(gameNight: GameNight){
+    this.dashboardService.deleteGameNight(gameNight)
+  }
+  runGameNight(gameNight: GameNight){
+    this.dashboardService.runGameNight(gameNight)
+  }
+  editGame(game: Game){
+    this.dashboardService.editGame(game)
+  }
+  editGameNight(gameNight: GameNight){
+    this.dashboardService.editGameNight(gameNight)
   }
 }

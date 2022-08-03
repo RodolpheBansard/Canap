@@ -10,7 +10,8 @@ export class GameNight{
               public leaderBoard:TeamRank[],
               public playerByTeam: number,
               public numberOfTeam: number,
-              public numberOfGame: number
+              public numberOfGame: number,
+              public documentId?:string,
               ) {
   }
 

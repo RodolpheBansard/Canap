@@ -1,0 +1,23 @@
+<div (mouseenter)="onMouseEnter()" class="card-item-menu">
+  <img src="assets/icons/menu-icon.svg">
+
+
+</div>
+
+<div (mouseleave)="onMouseLeave()" class="popup-container">
+  <div *ngIf="isHover" class="popup">
+    <div (click)="runEvent.emit()" class="popup-item">
+      <img src="assets/icons/game-icon.svg">
+      <span>Run</span>
+    </div>
+    <div (click)="editEvent.emit()" class="popup-item">
+      <img src="assets/icons/add-icon.svg">
+      <span>Edit</span>
+    </div>
+    <div (click)="deleteEvent.emit()" class="popup-item">
+      <img src="assets/icons/delete-icon.svg">
+      <span>Delete</span>
+    </div>
+  </div>
+</div>
+

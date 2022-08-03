@@ -17,7 +17,10 @@
         <span>{{gameNight.name}}</span>
         <span>12 Players</span>
         <span>Teams of 3</span>
-        <img src="assets/icons/menu-icon.svg">
+        <app-card-item-menu (deleteEvent)="deleteEvent.emit(gameNight)"
+                            (editEvent)="editEvent.emit(gameNight)"
+                            (runEvent)="runEvent.emit(gameNight)"
+        ></app-card-item-menu>
       </div>
     </div>
 
@@ -28,7 +31,11 @@
           <span>{{game.name}}</span>
         </div>
 
-        <img src="assets/icons/menu-icon.svg">
+        <app-card-item-menu (deleteEvent)="deleteEvent.emit(game)"
+                            (editEvent)="editEvent.emit(game)"
+                            (runEvent)="runEvent.emit(game)"
+        ></app-card-item-menu>
+
       </div>
     </div>
   </div>
@@ -42,4 +49,3 @@
     <span class="normal-text no-content-text">No Game Night created</span>
   </div>
 </ng-template>
-
