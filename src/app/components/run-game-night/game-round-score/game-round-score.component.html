@@ -1,9 +1,20 @@
 <div *ngIf="gameNight$ | async as gameNight" class="summary-container">
 
 
-  <div>
-    <p>{{gameNight.games[gameIndex].game.name}}</p>
-    <p>Round {{GetGameRound(gameNight)}}</p>
+  <span>{{gameNight.games[gameIndex].game.name}} - Round {{GetGameRound(gameNight)}}</span>
+
+  <div class="score-input-container">
+    <div class="score-input">
+      <span>Rank</span>
+      <span>Team</span>
+    </div>
+    <div *ngFor="let i of [].constructor(gameNight.numberOfTeam); let index = index" class="score-input">
+      <span>{{index + 1}}</span>
+
+      <app-team-emoji-picker></app-team-emoji-picker>
+
+
+    </div>
   </div>
 
 

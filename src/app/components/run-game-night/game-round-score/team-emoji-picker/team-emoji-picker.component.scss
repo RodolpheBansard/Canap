@@ -1,0 +1,25 @@
+.emoji-picker{
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .emojis-container{
+    left: 100px;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    background: white;
+    gap: 8px;
+    width: auto;
+    background: var(--grey800);
+    border-radius: 4px;
+    padding: 4px 10px;
+
+    span{
+      border: none!important;
+      font-size: 20px;
+    }
+  }
+}

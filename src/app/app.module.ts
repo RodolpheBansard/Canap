@@ -32,6 +32,7 @@ import { RunGameNightComponent } from './components/run-game-night/run-game-nigh
 import { GameNightSummaryComponent } from './components/run-game-night/game-night-summary/game-night-summary.component';
 import { GameRoundScoreComponent } from './components/run-game-night/game-round-score/game-round-score.component';
 import { GameNightTotalScoreComponent } from './components/run-game-night/game-night-total-score/game-night-total-score.component';
+import { TeamEmojiPickerComponent } from './components/run-game-night/game-round-score/team-emoji-picker/team-emoji-picker.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { GameNightTotalScoreComponent } from './components/run-game-night/game-n
     RunGameNightComponent,
     GameNightSummaryComponent,
     GameRoundScoreComponent,
-    GameNightTotalScoreComponent
+    GameNightTotalScoreComponent,
+    TeamEmojiPickerComponent
   ],
   imports: [
     CommonModule,

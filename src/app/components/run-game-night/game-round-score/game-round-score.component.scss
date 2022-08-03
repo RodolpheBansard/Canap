@@ -37,3 +37,34 @@
 .prev-next-buttons.reverse{
   flex-direction: row-reverse;
 }
+
+.score-input-container{
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+
+  .score-input{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    span,div,app-team-emoji-picker{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    img{
+      width: 1rem;
+      height: 1rem;
+    }
+
+    span:first-child{
+      border-right: 1px solid white;
+    }
+
+
+  }
+}
+
