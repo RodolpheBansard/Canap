@@ -5,6 +5,7 @@ import {Observable} from "rxjs";
 import {GameNight} from "../../model/game-night";
 import {GameWithRounds} from "../../model/game-with-rounds";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-game-night',
@@ -21,7 +22,8 @@ export class AddGameNightComponent implements OnInit {
   gameNight$ = new Observable<GameNight>()
 
   constructor(public gameNightService : GameNightService,
-              private afs: AngularFirestore) {
+              private afs: AngularFirestore,
+              private router: Router) {
     this.gameNight$ = this.gameNightService.gameNight$;
   }
 
@@ -33,6 +35,7 @@ export class AddGameNightComponent implements OnInit {
     const gameNightCollection = this.afs.collection<GameNight>('gameNights');
     gameNightCollection.add(JSON.parse(JSON.stringify(this.gameNightService.gameNight$.getValue()))).then((data) => {
       console.log(data);
+      this.router.navigateByUrl('dashboard');
     });
   }
 

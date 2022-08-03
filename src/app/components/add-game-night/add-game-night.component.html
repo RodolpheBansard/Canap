@@ -20,12 +20,12 @@
     ></app-game-night-number-input>
 
 
-    <ng-container *ngFor="let team of (gameNight$|async)?.teams; let index = index">
-      <p>{{index}}</p>
-      <app-game-night-create-team *ngIf="counter===3 + index"
+    <ng-container *ngFor="let team of (gameNight$|async)?.teams?.slice()?.reverse(); let index = index">
+      <app-game-night-create-team
+                                  *ngIf="counter===3 + index"
                                   (teamEmitter)="updateTeams($event,index)"
-                                  style="width: 100%"
-      ></app-game-night-create-team>
+                                  style="width: 100%">
+      </app-game-night-create-team>
     </ng-container>
 
 
@@ -35,11 +35,11 @@
                                  style="width: 100%"
     ></app-game-night-number-input>
 
-    <ng-container *ngFor="let team of (gameNight$|async)?.games; let index = index">
-      <p>{{index}}</p>
-      <app-game-night-add-game *ngIf="counter === (4 + gameNightService.gameNight.numberOfTeam + index )"
+    <ng-container *ngFor="let team of (gameNight$|async)?.games?.slice()?.reverse(); let index = index">
+      <app-game-night-add-game *ngIf="counter === (4 + gameNightService.gameNight.numberOfTeam + index ) && numberOfGame"
                                    (gameEmitter)="updateGames($event,index)"
                                    [title]="'How many games ?'"
+                                   [numberOfTeam]="numberOfTeams"
                                    style="width: 100%"
       ></app-game-night-add-game>
     </ng-container>

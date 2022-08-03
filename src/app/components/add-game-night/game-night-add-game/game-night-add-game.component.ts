@@ -1,8 +1,9 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {GameWithRounds} from "../../../model/game-with-rounds";
 import {DashboardService} from "../../../service/dashboard.service";
 import {Game} from "../../../model/game";
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-game-night-add-game',
@@ -15,18 +16,19 @@ export class GameNightAddGameComponent implements OnInit {
   @Output()
   gameEmitter : EventEmitter<GameWithRounds> = new EventEmitter<GameWithRounds>();
 
+  @Input()
+  numberOfTeam! : number
+
   games: Game[] = [];
   selectedGame! : Game;
   isSelectorActive = false;
+
+  isLoading= true;
 
   constructor(private fb: FormBuilder,
               private dashboardService: DashboardService) {
     this.addGameForm = this.fb.group({
       numberOfRounds: ['', [Validators.required]],
-      first: ['', [Validators.required]],
-      second: ['', [Validators.required]],
-      third: ['', [Validators.required]],
-      fourth: ['', [Validators.required]],
     });
 
     dashboardService.games$.subscribe((games) => {
@@ -34,6 +36,13 @@ export class GameNightAddGameComponent implements OnInit {
         this.games = games;
       }
     });
+    setTimeout(()=> {
+      for(let i=0 ; i<this.numberOfTeam; i++){
+        this.addGameForm.addControl('Points'+i,this.fb.control('', Validators.required));
+      }
+      this.isLoading=false;
+    },200)
+
   }
 
   ngOnInit(): void {
@@ -48,10 +57,15 @@ export class GameNightAddGameComponent implements OnInit {
   }
 
   submit(){
+    const pointRepartition : number[] = [];
+    for(let i=0 ; i<this.numberOfTeam; i++){
+      pointRepartition.push(this.addGameForm.get('Points'+i)?.value);
+    }
+
     const game = {
       game:this.selectedGame,
       numberOfRounds: this.addGameForm.get('numberOfRounds')?.value,
-      pointRepartition:[1,2,3]
+      pointRepartition: pointRepartition
     }
     this.gameEmitter.emit(game);
   }
@@ -59,16 +73,22 @@ export class GameNightAddGameComponent implements OnInit {
   get numberOfRounds(){
     return this.addGameForm.get('numberOfRounds')
   }
-  get first(){
-    return this.addGameForm.get('first')
+  get Points0(){
+    return this.addGameForm.get('Points0')
   }
-  get second(){
-    return this.addGameForm.get('second')
+  get Points1(){
+    return this.addGameForm.get('Points1')
   }
-  get third(){
-    return this.addGameForm.get('third')
+  get Points2(){
+    return this.addGameForm.get('Points2')
   }
-  get fourth(){
-    return this.addGameForm.get('fourth')
+  get Points3(){
+    return this.addGameForm.get('Points3')
+  }
+  get Points4(){
+    return this.addGameForm.get('Points4')
+  }
+  get Points5(){
+    return this.addGameForm.get('Points5')
   }
 }

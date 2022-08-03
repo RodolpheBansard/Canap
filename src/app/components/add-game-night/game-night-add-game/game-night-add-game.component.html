@@ -1,4 +1,4 @@
-<div [formGroup]="addGameForm" class="form-container">
+<div *ngIf="!isLoading" [formGroup]="addGameForm" class="form-container">
   <div class="input-container">
     <span>Add first game</span>
 
@@ -22,13 +22,15 @@
 
   </div>
 
-  <div class="input-container">
+  <div  class="input-container">
     <span>Points by ranking</span>
-    <div class="ranking-container">
-      <input formControlName="first" placeholder="1st">
-      <input formControlName="second" placeholder="2nd">
-      <input formControlName="third" placeholder="3rd">
-      <input formControlName="fourth" placeholder="4th">
+    <div [formGroup]="addGameForm" class="ranking-container">
+      <input *ngIf="this.numberOfTeam >= 1" formControlName="Points0" placeholder="1st">
+      <input *ngIf="this.numberOfTeam >= 2" formControlName="Points1" placeholder="2nd">
+      <input *ngIf="this.numberOfTeam >= 3" formControlName="Points2" placeholder="3rd">
+      <input *ngIf="this.numberOfTeam >= 4" formControlName="Points3" placeholder="4th">
+      <input *ngIf="this.numberOfTeam >= 5" formControlName="Points4" placeholder="5th">
+      <input *ngIf="this.numberOfTeam >= 6" formControlName="Points5" placeholder="6th">
     </div>
   </div>
 
