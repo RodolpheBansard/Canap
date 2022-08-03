@@ -16,6 +16,12 @@ export class GameNightService {
   constructor() {
   }
 
+  selectGameNight(gameNight: GameNight){
+    this.gameNight$.next(gameNight);
+  }
+
+
+
   updateName(name: string){
     this.gameNight.name = name;
     this.gameNight$.next(this.gameNight);

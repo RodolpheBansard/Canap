@@ -7,6 +7,7 @@ import firebase from "firebase/compat";
 import {DashboardService} from "../../service/dashboard.service";
 import {Game} from "../../model/game";
 import {GameNight} from "../../model/game-night";
+import {GameNightService} from "../../service/game-night.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -14,15 +15,13 @@ import {GameNight} from "../../model/game-night";
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-
-  displayNameLetter?: string = '';
-
   games: Game[] = [];
   gameNights: GameNight[] = [];
 
   constructor(
               private router: Router,
-              public dashboardService : DashboardService
+              public dashboardService : DashboardService,
+              public gameNightService: GameNightService
   ) {
 
     dashboardService.games$.subscribe((games) => {
@@ -51,12 +50,11 @@ export class DashboardComponent {
     this.dashboardService.deleteGameNight(gameNight)
   }
   runGameNight(gameNight: GameNight){
-    this.dashboardService.runGameNight(gameNight)
+    this.router.navigateByUrl('run-game-night');
+    this.gameNightService.selectGameNight(gameNight)
   }
   editGame(game: Game){
-    this.dashboardService.editGame(game)
   }
   editGameNight(gameNight: GameNight){
-    this.dashboardService.editGameNight(gameNight)
   }
 }

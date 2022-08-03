@@ -28,6 +28,10 @@ import { PrimaryButtonComponent } from './components/primary-button/primary-butt
 import {NgxEmojiPickerModule} from "ngx-emoji-picker";
 import { StepperComponent } from './components/add-game-night/stepper/stepper.component';
 import {CardItemMenuComponent} from "./components/dashboard/dashboard-card/card-item-menu/card-item-menu.component";
+import { RunGameNightComponent } from './components/run-game-night/run-game-night.component';
+import { GameNightSummaryComponent } from './components/run-game-night/game-night-summary/game-night-summary.component';
+import { GameRoundScoreComponent } from './components/run-game-night/game-round-score/game-round-score.component';
+import { GameNightTotalScoreComponent } from './components/run-game-night/game-night-total-score/game-night-total-score.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +50,11 @@ import {CardItemMenuComponent} from "./components/dashboard/dashboard-card/card-
     GameNightSaveComponent,
     PrimaryButtonComponent,
     StepperComponent,
-    CardItemMenuComponent
+    CardItemMenuComponent,
+    RunGameNightComponent,
+    GameNightSummaryComponent,
+    GameRoundScoreComponent,
+    GameNightTotalScoreComponent
   ],
   imports: [
     CommonModule,

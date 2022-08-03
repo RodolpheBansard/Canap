@@ -1,0 +1,19 @@
+<div *ngIf="gameNight$ | async as gameNight" class="summary-container">
+  <span>Let’s Launch This GameNight</span>
+  <div class="summary-content">
+    <div class="summary-labels">
+      <span>Name :</span>
+      <span>Players :</span>
+      <span>Team :</span>
+      <span>Games :</span>
+    </div>
+    <div class="summary-data">
+      <span>{{gameNight.name}}</span>
+      <span>{{gameNight.numberOfTeam*gameNight.playerByTeam}}</span>
+      <span>{{gameNight.numberOfTeam}}</span>
+      <span *ngFor="let gameWithRound of gameNight.games">{{gameWithRound.game.name}}</span>
+    </div>
+  </div>
+
+  <app-primary-button [buttonText]="'Start'" (clickEmitter)="nextStepEmitter.emit()"></app-primary-button>
+</div>

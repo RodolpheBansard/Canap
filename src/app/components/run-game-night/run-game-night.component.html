@@ -1,0 +1,25 @@
+<app-header style="position: absolute" [isSettingsVisible]="false"></app-header>
+
+<div class="run-gameNight-container">
+  <div class="left-container">
+
+    <app-game-night-summary *ngIf="currentState === 0"
+                            (nextStepEmitter)="launchGameNight()"
+                            [gameNight$]="gameNight$"
+                            style="width: 100%"
+    ></app-game-night-summary>
+
+    <app-game-round-score *ngIf="currentState === 1"
+                          [gameNight$]="gameNight$"
+                          (goToResultEvent)="goToResults()"
+                          style="width: 100%"
+    ></app-game-round-score>
+
+    <app-game-night-total-score *ngIf="currentState === 2"
+                                style="width: 100%"
+    ></app-game-night-total-score>
+
+  </div>
+
+  <div class="illustration-container"  [style.background-image]="'url(../../../assets/images/save-gameNight.png)'"></div>
+</div>

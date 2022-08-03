@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Observable} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 import {GameNight} from "../model/game-night";
 import {AngularFirestore, AngularFirestoreCollection} from "@angular/fire/compat/firestore";
 import {Game} from "../model/game";
@@ -16,6 +16,11 @@ export class DashboardService {
     this.games$ = afs.collection<Game>('games').valueChanges({ idField: 'documentId' });
   }
 
+  getGameNight(gameNight: BehaviorSubject<GameNight>): Observable<GameNight>{
+    // @ts-ignore
+    return this.afs.doc<GameNight>('gameNights/JcgYkZF2XaiwQ5AKxbx4').valueChanges({ idField: 'documentId' });
+  }
+
 
   addGame(game:Game): Promise<any>{
     return this.afs.collection<Game>('games').add(game);
@@ -27,15 +32,7 @@ export class DashboardService {
   deleteGameNight(gameNight: GameNight){
     this.afs.doc<Game>('gameNights/'+gameNight.documentId).delete();
   }
-  runGameNight(gameNight: GameNight){
-    console.log(gameNight);
-  }
-  editGame(game: Game){
-    console.log(game);
-  }
-  editGameNight(gameNight: GameNight){
-    console.log(gameNight);
-  }
+
 
 
 }
