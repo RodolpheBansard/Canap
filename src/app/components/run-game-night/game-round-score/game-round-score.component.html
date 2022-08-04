@@ -8,10 +8,13 @@
       <span>Rank</span>
       <span>Team</span>
     </div>
-    <div *ngFor="let i of [].constructor(gameNight.numberOfTeam); let index = index" class="score-input">
-      <span>{{index + 1}}</span>
-
-      <app-team-emoji-picker></app-team-emoji-picker>
+    <div *ngFor="let i of [].constructor(gameNight.numberOfTeam); let rankIndex = index" class="score-input">
+      <span>{{rankIndex + 1}}</span>
+      <app-team-emoji-picker (pickEmojiEvent)="setRank($event,rankIndex)"
+                             [currentScore]="currentScore"
+                             [gameNight]="gameNight"
+                             [rankIndex]="rankIndex"
+      ></app-team-emoji-picker>
 
 
     </div>
@@ -22,7 +25,7 @@
   <div [ngClass]="{'reverse': roundIndex===1}"  class="prev-next-buttons">
     <app-primary-button *ngIf="roundIndex>1" [buttonText]="'Previous'" (clickEmitter)="previousRound()"></app-primary-button>
     <app-primary-button  *ngIf="roundIndex<getTotalRound()" [buttonText]="'Next'" (clickEmitter)="nextRound()"></app-primary-button>
-    <app-primary-button  *ngIf="roundIndex===getTotalRound()" [buttonText]="'Results'" (clickEmitter)="goToResultEvent.emit()"></app-primary-button>
+    <app-primary-button  *ngIf="roundIndex===getTotalRound()" [buttonText]="'Results'" (clickEmitter)="goToResultEvent.emit(scores)"></app-primary-button>
   </div>
 
 

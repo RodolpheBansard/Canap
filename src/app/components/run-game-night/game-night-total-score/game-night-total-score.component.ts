@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Observable} from "rxjs";
+import {TeamRank} from "../../../model/team-rank";
 
 @Component({
   selector: 'app-game-night-total-score',
@@ -6,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./game-night-total-score.component.scss']
 })
 export class GameNightTotalScoreComponent implements OnInit {
+
+  @Input()
+  leaderBoard$! : Observable<TeamRank[]>
 
   constructor() { }
 

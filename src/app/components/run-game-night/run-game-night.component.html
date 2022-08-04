@@ -11,11 +11,12 @@
 
     <app-game-round-score *ngIf="currentState === 1"
                           [gameNight$]="gameNight$"
-                          (goToResultEvent)="goToResults()"
+                          (goToResultEvent)="goToResults($event)"
                           style="width: 100%"
     ></app-game-round-score>
 
     <app-game-night-total-score *ngIf="currentState === 2"
+                                [leaderBoard$]="leaderBoard$"
                                 style="width: 100%"
     ></app-game-night-total-score>
 

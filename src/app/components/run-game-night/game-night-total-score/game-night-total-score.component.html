@@ -1,1 +1,9 @@
-<p>game-night-total-score works!</p>
+<div *ngIf="leaderBoard$ | async as leaderBoard" class="leaderBoard-container">
+  <span>Results</span>
+  <div class="leaderBoard-content">
+    <span >RANK TEAM POINTS</span>
+    <span *ngFor="let teamRank of leaderBoard">{{teamRank.rank}} {{teamRank.team.emoji}} {{teamRank.score}}</span>
+  </div>
+
+  <app-primary-button [buttonText]="'Finish'" ></app-primary-button>
+</div>

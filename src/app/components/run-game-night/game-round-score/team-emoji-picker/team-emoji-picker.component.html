@@ -1,8 +1,7 @@
-<div (click)="toggleEmojiPicker()" class="emoji-picker">
-  <img src="assets/icons/emoji-icon.svg">
-  <div *ngIf="isEmojiPickerVisible" class="emojis-container">
-    <span>🤑</span>
-    <span>🤑</span>
-    <span>🤑</span>
+<div class="emoji-picker">
+  <img *ngIf="!selectedEmoji" (click)="toggleEmojiPicker()" src="assets/icons/emoji-icon.svg">
+  <span *ngIf="selectedEmoji" (click)="toggleEmojiPicker()">{{selectedEmoji}}</span>
+  <div *ngIf="isEmojiPickerVisible && gameNight" class="emojis-container">
+    <span *ngFor="let emoji of getEmojiList()" (click)="selectEmoji(emoji)">{{emoji}}</span>
   </div>
 </div>
