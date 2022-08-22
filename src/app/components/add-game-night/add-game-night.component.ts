@@ -19,6 +19,8 @@ export class AddGameNightComponent implements OnInit {
   numberOfGame : number = 1;
   numberOfPlayerByTeam: number = 1;
 
+  imageUrl : string = '';
+
   gameNight$ = new Observable<GameNight>()
 
   constructor(public gameNightService : GameNightService,
@@ -45,6 +47,7 @@ export class AddGameNightComponent implements OnInit {
   updateCounter(number: number){
     console.log(number)
     this.counter = number;
+    this.setImageUrl(this.imageUrl)
   }
 
   updateName(name: string){
@@ -74,6 +77,14 @@ export class AddGameNightComponent implements OnInit {
   updateGames(game: GameWithRounds, index: number){
     this.gameNightService.updateGames(game,index);
     this.incrementCounter();
+  }
+
+  setImageUrl(url:string){
+    setTimeout(() => {
+      console.log(url)
+      this.imageUrl = url;
+    })
+
   }
 
 }

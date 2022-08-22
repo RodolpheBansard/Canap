@@ -7,13 +7,20 @@ import {Team} from "../../../model/team";
   templateUrl: './game-night-create-team.component.html',
   styleUrls: ['./game-night-create-team.component.scss']
 })
-export class GameNightCreateTeamComponent {
+export class GameNightCreateTeamComponent  implements OnInit{
   addGameNightNameForm: FormGroup;
 
   emojiSelected! : string;
 
   @Output()
   teamEmitter = new EventEmitter<Team>();
+
+  @Output()
+  imageUrlEmitter = new EventEmitter<string>();
+
+  ngOnInit(): void {
+    this.imageUrlEmitter.emit('url(../../../assets/images/team.png)')
+  }
 
   constructor(private fb: FormBuilder) {
     this.addGameNightNameForm = this.fb.group({

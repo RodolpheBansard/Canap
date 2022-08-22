@@ -1,5 +1,5 @@
 <div class="header">
-  <div *ngIf="isLogoVisible" class="header-group">
+  <div (click)="goToDashboard()" *ngIf="isLogoVisible" class="header-group logo">
     <img class="simple-glow" src="assets/icons/controller-icon.svg">
     <span class="simple-glow">CANAP</span>
   </div>

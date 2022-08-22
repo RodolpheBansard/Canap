@@ -25,6 +25,13 @@ export class GameNightAddGameComponent implements OnInit {
 
   isLoading= true;
 
+  @Output()
+  imageUrlEmitter = new EventEmitter<string>();
+
+  ngOnInit(): void {
+    this.imageUrlEmitter.emit('url(../../../assets/images/addGame.png)')
+  }
+
   constructor(private fb: FormBuilder,
               private dashboardService: DashboardService) {
     this.addGameForm = this.fb.group({
@@ -45,15 +52,13 @@ export class GameNightAddGameComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
-  }
-
   toggleSelector(){
     this.isSelectorActive = !this.isSelectorActive;
   }
 
   selectGame(game: Game){
     this.selectedGame = game;
+    this.imageUrlEmitter.emit('url(' + game.imageUrl + ')');
   }
 
   submit(){

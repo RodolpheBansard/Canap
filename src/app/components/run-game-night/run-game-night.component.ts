@@ -6,6 +6,8 @@ import {DashboardService} from "../../service/dashboard.service";
 import {CurrentGameNight} from "../../model/current-game-night";
 import {RoundScore} from "../../model/round-score";
 import {TeamRank} from "../../model/team-rank";
+import * as url from "url";
+import {Game} from "../../model/game";
 
 export enum GameNightState{
   SUMMARY,
@@ -25,6 +27,8 @@ export class RunGameNightComponent implements OnInit {
   leaderBoard$! : BehaviorSubject<TeamRank[]>;
 
   gameNight!:GameNight;
+
+  currentGameImage : string = '';
 
 
   gameNight$: Observable<GameNight>
@@ -47,6 +51,10 @@ export class RunGameNightComponent implements OnInit {
 
   launchGameNight(){
     this.currentState = GameNightState.ROUND
+  }
+
+  setGameImage(game: Game){
+    this.currentGameImage = game.imageUrl;
   }
 
   goToResults(scores : RoundScore[]){

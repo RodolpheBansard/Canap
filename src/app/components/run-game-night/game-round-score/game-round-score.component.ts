@@ -5,6 +5,7 @@ import {RoundScore} from "../../../model/round-score";
 import {CurrentGameNight} from "../../../model/current-game-night";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {distinctUntilChanged, map} from "rxjs/operators";
+import {Game} from "../../../model/game";
 
 
 
@@ -29,6 +30,9 @@ export class GameRoundScoreComponent implements OnInit {
   @Output()
   goToResultEvent : EventEmitter<RoundScore[]> = new EventEmitter<RoundScore[]>();
 
+  @Output()
+  gameEvent : EventEmitter<Game> = new EventEmitter<Game>();
+
   gameIndex = 0;
   roundIndex = 1;
 
@@ -41,6 +45,7 @@ export class GameRoundScoreComponent implements OnInit {
       if(data) {
         this.gameNight = data;
 
+        this.gameEvent.emit(this.gameNight.games[this.gameIndex].game)
         this.initScores();
       }
     })
@@ -89,12 +94,14 @@ export class GameRoundScoreComponent implements OnInit {
   previousRound(){
     this.roundIndex--;
     this.gameIndex = this.getGameIndex()
+    this.gameEvent.emit(this.gameNight.games[this.gameIndex].game)
     this.emitScore(this.scores[this.roundIndex-1]);
   }
 
   nextRound(){
     this.roundIndex++;
     this.gameIndex = this.getGameIndex()
+    this.gameEvent.emit(this.gameNight.games[this.gameIndex].game)
     this.emitScore(this.scores[this.roundIndex-1]);
   }
 

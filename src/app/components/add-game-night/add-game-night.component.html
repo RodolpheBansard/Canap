@@ -3,18 +3,21 @@
   <div class="form-container">
     <app-game-night-name *ngIf="counter===0"
                          (nameEmitter)="updateName($event)"
+                         (imageUrlEmitter)="setImageUrl($event)"
                          style="width: 100%"
     ></app-game-night-name>
 
     <app-game-night-number-input *ngIf="counter===1"
                                  (numberEmitter)="updatePlayerByTeam($event)"
                                  [title]="'How many players by team ?'"
+                                 (imageUrlEmitter)="setImageUrl($event)"
                                  style="width: 100%"
     ></app-game-night-number-input>
 
     <app-game-night-number-input *ngIf="counter===2"
                                  (numberEmitter)="updateNumberOfTeam($event)"
                                  [title]="'How many Teams ?'"
+                                 (imageUrlEmitter)="setImageUrl($event)"
                                  style="width: 100%"
     ></app-game-night-number-input>
 
@@ -23,6 +26,7 @@
       <app-game-night-create-team
                                   *ngIf="counter===3 + index"
                                   (teamEmitter)="updateTeams($event,index)"
+                                  (imageUrlEmitter)="setImageUrl($event)"
                                   style="width: 100%">
       </app-game-night-create-team>
     </ng-container>
@@ -31,6 +35,7 @@
     <app-game-night-number-input *ngIf="counter === (3 + gameNightService.gameNight.numberOfTeam)"
                                  (numberEmitter)="updateNumberOfGame($event)"
                                  [title]="'How many games ?'"
+                                 (imageUrlEmitter)="setImageUrl($event)"
                                  style="width: 100%"
     ></app-game-night-number-input>
 
@@ -39,12 +44,14 @@
                                    (gameEmitter)="updateGames($event,index)"
                                    [title]="'How many games ?'"
                                    [numberOfTeam]="numberOfTeams"
+                                    (imageUrlEmitter)="setImageUrl($event)"
                                    style="width: 100%"
       ></app-game-night-add-game>
     </ng-container>
 
     <app-game-night-save *ngIf="counter===4 + gameNightService.gameNight.numberOfTeam + gameNightService.gameNight.numberOfGame"
                          (saveEmitter)="save()"
+                         (imageUrlEmitter)="setImageUrl($event)"
                          style="width: 100%"
     ></app-game-night-save>
 
@@ -56,6 +63,7 @@
 
   </div>
 
-  <div class="illustration-container"  [style.background-image]="'url(../../../assets/images/create-gameNight.png)'"></div>
+  <div class="illustration-container"  [style.background-image]="imageUrl"></div>
+
 </div>
 

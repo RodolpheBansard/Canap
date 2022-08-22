@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {AuthService} from "../../service/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -16,10 +17,15 @@ export class HeaderComponent {
 
 
   constructor(
-    public authService: AuthService) {
+    public authService: AuthService,
+    public router: Router) {
   }
 
   logout(){
     this.authService.logout();
+  }
+
+  goToDashboard(){
+    this.router.navigateByUrl('dashboard');
   }
 }

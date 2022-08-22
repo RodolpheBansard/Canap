@@ -1,4 +1,5 @@
 .dashboard-card{
+  overflow: hidden;
   background: var(--grey700);
   border-radius: 20px;
   box-shadow: var(--card-glow);
@@ -83,6 +84,19 @@
       border-bottom: none
     }
   }
+  .dashboard-card-content::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  .dashboard-card-content::-webkit-scrollbar-track {
+    background: var(--grey700);
+    border-radius: 20px;
+  }
+
+  .dashboard-card-content::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 20px;
+  }
 
   .no-content-icon{
     width: 44px;
@@ -95,6 +109,11 @@
 
 .add-button{
   cursor: pointer;
+  transition: 0.2s;
+}
+.add-button:hover{
+  filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.5));
+
 }
 
 .card-item-menu{

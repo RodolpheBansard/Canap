@@ -4,6 +4,8 @@
   background: var(--primary-gradient);
   padding: .10rem;
   border-radius: 4px;
+  filter: drop-shadow(0px 0px 0px rgba(255, 255, 255, 0.5));
+  transition: 0.3s;
 
   .button-hover-background{
     display: flex;
@@ -20,4 +22,9 @@
     }
 
   }
+}
+
+.button-gradient-background:hover{
+  filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.5));
+  transition: 0.3s;
 }

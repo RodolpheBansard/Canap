@@ -12,14 +12,20 @@ export class GameNightNameComponent implements OnInit {
   @Output()
   nameEmitter = new EventEmitter<string>();
 
+  @Output()
+  imageUrlEmitter = new EventEmitter<string>();
+
+  ngOnInit(): void {
+    this.imageUrlEmitter.emit('url(../../../assets/images/create-gameNight.png)')
+  }
+
   constructor(private fb: FormBuilder) {
     this.addGameNightNameForm = this.fb.group({
       name: ['', [Validators.required]]
     })
   }
 
-  ngOnInit(): void {
-  }
+
 
   get name(){
     return this.addGameNightNameForm.get('name')
