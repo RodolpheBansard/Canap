@@ -2,6 +2,7 @@
 
 Canap is a web platform that provides structure to game nights with friends.
 
+![My Image](src/assets/preview-canap.png)
 
 ## Tech Stack
 
@@ -10,4 +11,4 @@ Canap is a web platform that provides structure to game nights with friends.
 **Server:** Firebase
 
 
-![My Image](src/assets/my-image.jpg)
+
