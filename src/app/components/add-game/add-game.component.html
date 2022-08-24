@@ -7,7 +7,11 @@
       <input formControlName="name" placeholder="Game Name">
       <input formControlName="description" placeholder="Description">
     </div>
-    <button *ngIf="addGameForm.valid && uploadImageUrl.getValue()" (click)="onSubmit()">submit</button>
+    <app-primary-button *ngIf="addGameForm.valid && uploadImageUrl.getValue()"
+                        (clickEmitter)="onSubmit()"
+                        [buttonText]="'Submit'">
+
+    </app-primary-button>
   </div>
   <div class="image-container">
     <div *ngIf="uploadImageUrl.getValue() === '' else image" (fileDropped)="fileUpload($event)" class="import-card" fileDrop>

@@ -11,7 +11,7 @@ import { from } from 'rxjs';
   styleUrls: ['./game-night-add-game.component.scss']
 })
 export class GameNightAddGameComponent implements OnInit {
-  addGameForm: FormGroup;
+  addGameForm!: FormGroup;
 
   @Output()
   gameEmitter : EventEmitter<GameWithRounds> = new EventEmitter<GameWithRounds>();
@@ -30,15 +30,13 @@ export class GameNightAddGameComponent implements OnInit {
 
   ngOnInit(): void {
     this.imageUrlEmitter.emit('url(../../../assets/images/addGame.png)')
-  }
 
-  constructor(private fb: FormBuilder,
-              private dashboardService: DashboardService) {
+
     this.addGameForm = this.fb.group({
       numberOfRounds: ['', [Validators.required]],
     });
 
-    dashboardService.games$.subscribe((games) => {
+    this.dashboardService.games$.subscribe((games) => {
       if(games){
         this.games = games;
       }
@@ -49,6 +47,11 @@ export class GameNightAddGameComponent implements OnInit {
       }
       this.isLoading=false;
     },200)
+  }
+
+  constructor(private fb: FormBuilder,
+              private dashboardService: DashboardService) {
+
 
   }
 

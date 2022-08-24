@@ -15,11 +15,12 @@
     <div *ngIf="gameNights && gameNights.length>0" class="dashboard-card-content">
       <div class="card-content-item" *ngFor="let gameNight of gameNights">
         <span>{{gameNight.name}}</span>
-        <span>12 Players</span>
-        <span>Teams of 3</span>
+        <span>{{gameNight.numberOfTeam * gameNight.playerByTeam}} Players</span>
+        <span>Teams of {{gameNight.playerByTeam}}</span>
         <app-card-item-menu (deleteEvent)="deleteEvent.emit(gameNight)"
-                            (editEvent)="editEvent.emit(gameNight)"
                             (runEvent)="runEvent.emit(gameNight)"
+                            [isDeletable]="true"
+                            [isRunnable]="true"
         ></app-card-item-menu>
       </div>
     </div>
@@ -32,8 +33,7 @@
         </div>
 
         <app-card-item-menu (deleteEvent)="deleteEvent.emit(game)"
-                            (editEvent)="editEvent.emit(game)"
-                            (runEvent)="runEvent.emit(game)"
+                            [isDeletable]="true"
         ></app-card-item-menu>
 
       </div>

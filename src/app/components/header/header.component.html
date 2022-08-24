@@ -5,7 +5,7 @@
   </div>
 
   <div *ngIf="isSettingsVisible && isLogoVisible" class=" header-group">
-    <img (click)="logout()" class="simple-glow" src="assets/icons/settings-icon.svg">
+    <img (click)="logout()" class="simple-glow logout-icon" src="assets/icons/settings-icon.svg">
     <div class="simple-glow user-display-name">
       <span>{{authService.displayNameLetter}}</span>
     </div>

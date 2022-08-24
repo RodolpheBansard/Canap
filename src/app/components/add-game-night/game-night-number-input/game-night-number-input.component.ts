@@ -23,7 +23,12 @@ export class GameNightNumberInputComponent implements OnInit  {
 
 
   ngOnInit(): void {
-    this.imageUrlEmitter.emit('url(../../../assets/images/team.png)')
+    if(this.title === 'How many games ?'){
+      this.imageUrlEmitter.emit('url(../../../assets/images/team.png)');
+    } else{
+      this.imageUrlEmitter.emit('url(../../../assets/images/team.png)');
+    }
+
   }
 
 

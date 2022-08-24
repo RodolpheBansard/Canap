@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-card-item-menu',
@@ -15,6 +15,13 @@ export class CardItemMenuComponent implements OnInit {
   runEvent: EventEmitter<any> = new EventEmitter<any>();
   @Output()
   viewEvent: EventEmitter<any> = new EventEmitter<any>();
+
+  @Input()
+  isEditable = false;
+  @Input()
+  isDeletable = false;
+  @Input()
+  isRunnable = false;
 
   isHover = false;
 

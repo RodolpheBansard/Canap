@@ -1,8 +1,7 @@
 <div *ngIf="leaderBoard$ | async as leaderBoard" class="leaderBoard-container">
   <span>Results</span>
   <div class="leaderBoard-content">
-    <span >RANK TEAM POINTS</span>
-    <span *ngFor="let teamRank of leaderBoard">{{teamRank.rank}} {{teamRank.team.emoji}} {{teamRank.score}}</span>
+    <span *ngFor="let teamRank of leaderBoard">{{teamRank.rank}} - {{teamRank.team.emoji}} - {{teamRank.score}}pts</span>
   </div>
 
   <app-primary-button (clickEmitter)="goToDashboard()" [buttonText]="'Finish'" ></app-primary-button>
