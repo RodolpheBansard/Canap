@@ -71,13 +71,14 @@ export class RunGameNightComponent implements OnInit {
         leaderBoard.forEach((teamRank,teamRankIndex) => {
           if(teamRank.team.emoji === emoji){
             // @ts-ignore
-            teamRank.score += this.gameNight.games.find(element => element.game.name === score.game.name).pointRepartition[emojiIndex];
+            teamRank.score += +this.gameNight.games.find(element => element.game.name === score.game.name).pointRepartition[emojiIndex];
           }
         })
       })
     })
 
-    leaderBoard.sort((a,b) => a.score - b.score)
+    console.log( typeof leaderBoard[0].score)
+    leaderBoard.sort((a,b) => b.score - a.score)
     leaderBoard.forEach((teamRank,index) => {
       teamRank.rank = index+1;
     })

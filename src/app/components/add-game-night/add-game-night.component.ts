@@ -6,6 +6,7 @@ import {GameNight} from "../../model/game-night";
 import {GameWithRounds} from "../../model/game-with-rounds";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {Router} from "@angular/router";
+import {AuthService} from "../../service/auth.service";
 
 @Component({
   selector: 'app-add-game-night',
@@ -24,6 +25,7 @@ export class AddGameNightComponent implements OnInit {
   gameNight$ = new Observable<GameNight>()
 
   constructor(public gameNightService : GameNightService,
+              private authService: AuthService,
               private afs: AngularFirestore,
               private router: Router) {
     this.gameNight$ = this.gameNightService.gameNight$;
@@ -33,19 +35,21 @@ export class AddGameNightComponent implements OnInit {
   }
 
   save(){
-    console.log(this.gameNightService.gameNight$.getValue());
-    const gameNightCollection = this.afs.collection<GameNight>('gameNights');
-    gameNightCollection.add(JSON.parse(JSON.stringify(this.gameNightService.gameNight$.getValue()))).then((data) => {
-      console.log(data);
-      this.router.navigateByUrl('dashboard');
-    });
+    this.authService.getUserId().subscribe((userId) => {
+      const gameNight = this.gameNightService.gameNight$.getValue();
+      gameNight.userId = userId;
+      const gameNightCollection = this.afs.collection<GameNight>('gameNights');
+      gameNightCollection.add(JSON.parse(JSON.stringify(gameNight))).then((data) => {
+        this.router.navigateByUrl('dashboard');
+      });
+    })
+
   }
 
   incrementCounter(){
     this.counter++;
   }
   updateCounter(number: number){
-    console.log(number)
     this.counter = number;
     this.setImageUrl(this.imageUrl)
   }
@@ -81,7 +85,6 @@ export class AddGameNightComponent implements OnInit {
 
   setImageUrl(url:string){
     setTimeout(() => {
-      console.log(url)
       this.imageUrl = url;
     })
 

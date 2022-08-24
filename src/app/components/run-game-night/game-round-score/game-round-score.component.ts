@@ -6,6 +6,7 @@ import {CurrentGameNight} from "../../../model/current-game-night";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {distinctUntilChanged, map} from "rxjs/operators";
 import {Game} from "../../../model/game";
+import {AuthService} from "../../../service/auth.service";
 
 
 
@@ -36,7 +37,8 @@ export class GameRoundScoreComponent implements OnInit {
   gameIndex = 0;
   roundIndex = 1;
 
-  constructor(private afs: AngularFirestore) {
+  constructor(private afs: AngularFirestore,
+              private authService: AuthService) {
 
   }
 
@@ -50,19 +52,25 @@ export class GameRoundScoreComponent implements OnInit {
       }
     })
 
-    // @ts-ignore
-    this.currentGameNight$ = this.afs.doc<CurrentGameNight>('currentGameNight/1').valueChanges().subscribe((data) => {
-      if(data){
-        this.scores = data.scores;
-        this.currentScore.next(this.scores[this.roundIndex-1]);
-      }
+    this.authService.getUserId().subscribe((userId)=> {
+      // @ts-ignore
+      this.currentGameNight$ = this.afs.doc<CurrentGameNight>('currentGameNight/'+userId).valueChanges().subscribe((data) => {
+        if(data){
+          this.scores = data.scores;
+          this.currentScore.next(this.scores[this.roundIndex-1]);
+        }
+      })
     })
+
 
   }
 
   emitScore(roundScore : RoundScore){
-    this.currentScore.next(roundScore);
-    this.afs.doc('currentGameNight/1').set({scores:JSON.parse(JSON.stringify(this.scores))});
+    this.authService.getUserId().subscribe((userId)=> {
+      this.currentScore.next(roundScore);
+      this.afs.doc('currentGameNight/'+userId).set({scores:JSON.parse(JSON.stringify(this.scores))});
+    })
+
   }
 
   initScores(){
@@ -75,7 +83,7 @@ export class GameRoundScoreComponent implements OnInit {
         round: roundIndex,
         ranking: new Array(this.gameNight.numberOfTeam)
       })
-      if(roundIndex === this.gameNight.games[0].numberOfRounds){
+      if(roundIndex == this.gameNight.games[0].numberOfRounds){
         roundIndex = 1;
         gameIndex++;
       }
@@ -84,6 +92,7 @@ export class GameRoundScoreComponent implements OnInit {
       }
     }
     this.currentScore = new BehaviorSubject<RoundScore>(this.scores[0])
+    this.emitScore(this.scores[this.roundIndex-1])
   }
 
   setRank(emoji:string,rankIndex: number){
@@ -108,7 +117,7 @@ export class GameRoundScoreComponent implements OnInit {
   getTotalRound():number{
     let result : number = 0;
     this.gameNight.games.forEach((game) => {
-      result += game.numberOfRounds;
+      result += +game.numberOfRounds;
     })
     return result;
   }

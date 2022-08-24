@@ -12,6 +12,7 @@ export class GameNight{
               public numberOfTeam: number,
               public numberOfGame: number,
               public documentId?:string,
+              public userId?:string
               ) {
   }
 

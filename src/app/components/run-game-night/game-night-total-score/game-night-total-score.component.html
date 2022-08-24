@@ -5,5 +5,5 @@
     <span *ngFor="let teamRank of leaderBoard">{{teamRank.rank}} {{teamRank.team.emoji}} {{teamRank.score}}</span>
   </div>
 
-  <app-primary-button [buttonText]="'Finish'" ></app-primary-button>
+  <app-primary-button (clickEmitter)="goToDashboard()" [buttonText]="'Finish'" ></app-primary-button>
 </div>

@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
 import {TeamRank} from "../../../model/team-rank";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-game-night-total-score',
@@ -12,9 +13,12 @@ export class GameNightTotalScoreComponent implements OnInit {
   @Input()
   leaderBoard$! : Observable<TeamRank[]>
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
+  goToDashboard(){
+    this.router.navigateByUrl('dashboard')
+  }
 }

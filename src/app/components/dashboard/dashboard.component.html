@@ -3,7 +3,7 @@
 <div class="dashboard-container">
   <span class="title simple-glow">Dashboard</span>
 
-  <app-dashboard-card [gameNights]="gameNights"
+  <app-dashboard-card [gameNights]="dashboardService.gameNights$ | async"
                       [cardTitle]="'Game Nights'"
                       [cardIconUrl]="'assets/icons/gamenight-icon.svg'"
                       (runEvent)="runGameNight($event)"
@@ -13,7 +13,7 @@
   ></app-dashboard-card>
 
   <div class="game-and-history-container">
-    <app-dashboard-card [games]="games"
+    <app-dashboard-card [games]="dashboardService.games$ | async"
                         [cardTitle]="'Game List'"
                         [cardIconUrl]="'assets/icons/game-icon.svg'"
                         (editEvent)="editGame($event)"

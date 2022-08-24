@@ -1,8 +1,9 @@
 import {Injectable} from "@angular/core";
 import {AngularFireAuth} from "@angular/fire/compat/auth";
 import {ActivatedRoute, Router} from "@angular/router";
-import {DashboardService} from "./dashboard.service";
 import firebase from 'firebase/compat/app';
+import {Observable} from "rxjs";
+import {map} from "rxjs/operators";
 
 
 @Injectable({
@@ -10,19 +11,12 @@ import firebase from 'firebase/compat/app';
 })
 export class AuthService {
   displayNameLetter?: string = '';
-  userUid? :string = '';
 
   constructor(
     public auth: AngularFireAuth,
     private router: Router,
-    public dashboardService : DashboardService,
     private activatedRoute : ActivatedRoute) {
 
-    auth.onAuthStateChanged((user) => {
-      if(user){
-        this.userUid = user.uid
-      }
-    })
     this.auth.user.subscribe((user) => {
       if (user) {
         this.displayNameLetter = user.displayName?.charAt(0);
@@ -33,6 +27,18 @@ export class AuthService {
       }
     })
   }
+
+  getUserId(): Observable<string>{
+    return this.auth.user.pipe(map((user) => {
+      if(user){
+        return user?.uid;
+      }
+      else{
+        return '';
+      }
+    }))
+  }
+
 
   login() {
     this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());

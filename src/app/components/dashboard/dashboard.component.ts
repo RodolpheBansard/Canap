@@ -15,8 +15,8 @@ import {GameNightService} from "../../service/game-night.service";
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-  games: Game[] = [];
-  gameNights: GameNight[] = [];
+  games$: Observable<Game[]> = new Observable<Game[]>();
+  gameNights$: Observable<GameNight[]> = new Observable<GameNight[]>();
 
   constructor(
               private router: Router,
@@ -24,16 +24,7 @@ export class DashboardComponent {
               public gameNightService: GameNightService
   ) {
 
-    dashboardService.games$.subscribe((games) => {
-      if(games){
-        this.games = games;
-      }
-    })
-    dashboardService.gameNights$.subscribe((gameNights) => {
-      if(gameNights){
-        this.gameNights = gameNights;
-      }
-    })
+
   }
 
   addGameNight(){
@@ -50,6 +41,9 @@ export class DashboardComponent {
     this.dashboardService.deleteGameNight(gameNight)
   }
   runGameNight(gameNight: GameNight){
+    if(gameNight.documentId){
+      this.dashboardService.selectedGameNightId.next(gameNight.documentId);
+    }
     this.router.navigateByUrl('run-game-night');
     this.gameNightService.selectGameNight(gameNight)
   }

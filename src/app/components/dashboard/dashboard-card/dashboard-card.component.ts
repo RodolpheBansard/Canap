@@ -15,9 +15,9 @@ export class DashboardCardComponent implements OnInit {
   cardIconUrl! : string;
 
   @Input()
-  gameNights : GameNight[] = [];
+  gameNights : GameNight[] | null = [];
   @Input()
-  games: Game[] = [];
+  games: Game[] | null = [];
 
   @Output()
   onAddEvent : EventEmitter<any> = new EventEmitter<any>();

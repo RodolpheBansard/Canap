@@ -65,7 +65,7 @@ export class AddGameComponent {
       name:this.addGameForm.get('name')?.value,
       description:this.addGameForm.get('description')?.value
     }
-    this.dashBoardService.addGame(game).then(() => {
+    this.dashBoardService.addGame(game).subscribe(() => {
       this.router.navigateByUrl('dashboard');
     })
   }

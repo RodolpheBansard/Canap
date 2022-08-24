@@ -10,9 +10,9 @@
     </div>
   </div>
 
-  <div *ngIf="gameNights.length > 0 || games.length > 0 else noContent">
+  <div *ngIf="gameNights &&  gameNights.length > 0 || games && games.length > 0 else noContent">
 
-    <div *ngIf="gameNights.length>0" class="dashboard-card-content">
+    <div *ngIf="gameNights && gameNights.length>0" class="dashboard-card-content">
       <div class="card-content-item" *ngFor="let gameNight of gameNights">
         <span>{{gameNight.name}}</span>
         <span>12 Players</span>
@@ -24,7 +24,7 @@
       </div>
     </div>
 
-    <div *ngIf="games.length>0" class="dashboard-card-content">
+    <div *ngIf="games && games.length>0" class="dashboard-card-content">
       <div class="card-game-content-item" *ngFor="let game of games">
         <div class="item-title">
           <div class="game-preview" [style.background-image]="'url(' + game.imageUrl + ')'" ></div>
